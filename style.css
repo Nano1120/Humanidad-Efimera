@@ -1,0 +1,336 @@
+/* ================= TIPOGRAFÍAS ================= */
+@import url('https://fonts.cdnfonts.com/css/mediga');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+@import url('https://fonts.cdnfonts.com/css/spell-of-asia');
+
+/* ================= RESETEO ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'IM Fell English', serif;
+    overflow-x: hidden;
+    background: black;
+    color: white;
+
+    backface-visibility: hidden;
+}
+
+/* ================= DESACTIVAR SCROLL AL INICIO ================= */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* ================= PORTADA ================= */
+.portada {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+/* ================= CANVAS ================= */
+#anim-portada canvas,
+#anim-titulo canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 1 !important;
+    will-change: transform, opacity;
+}
+
+#anim-portada canvas { z-index: 0; }
+#anim-titulo canvas { z-index: 1; }
+
+/* ================= CONTENIDO PORTADA ================= */
+.portada-contenido {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    padding: 0 5%;
+    will-change: opacity, transform;
+}
+
+/* ================= TITULOS PORTADA ================= */
+.portada-contenido h1,
+.portada-contenido h2,
+.portada-contenido h3 {
+    font-family: 'Mediga', serif;
+    color: white;
+    text-rendering: optimizeLegibility;
+}
+
+.portada-contenido h1 {
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 700;
+}
+
+.portada-contenido h2 {
+    font-size: clamp(2.3rem, 6vw, 3.6rem);
+    font-weight: 500;
+}
+
+.portada-contenido h3 {
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+    font-weight: 400;
+}
+
+/* ================= BOTÓN ================= */
+#btn-empezar {
+    padding: 14px 30px;
+    margin-top: 35px;
+    background: rgba(255, 255, 255, 0.18);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    cursor: pointer;
+
+    font-family: 'Mediga', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+
+    z-index: 10;
+    position: relative;
+
+    transition: background 0.25s ease, 
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+
+    will-change: transform, box-shadow;
+}
+
+#btn-empezar:hover {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.04);
+    box-shadow: 
+        0 0 8px rgba(200, 240, 255, 0.4),
+        0 0 18px rgba(200, 240, 255, 0.25);
+}
+
+/* ================= TÍTULO PRINCIPAL ================= */
+.pagina-titulo {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: transparent !important;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+
+    will-change: opacity;
+}
+
+.pagina-titulo h1 {
+    font-family: 'Spell of Asia', sans-serif;  
+    letter-spacing: 2px;
+
+    position: relative;
+    z-index: 5;
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.75);
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 400;
+
+    transition: color 0.35s ease,
+                transform 0.35s ease,
+                text-shadow 0.35s ease;
+
+    will-change: transform, text-shadow, color;
+}
+
+.pagina-titulo h1:hover {
+    color: rgba(255, 255, 255, 0.95);
+    transform: scale(1.04);
+    text-shadow:
+        0 0 8px rgba(180, 230, 255, 0.7),
+        0 0 18px rgba(180, 230, 255, 0.5),
+        0 0 30px rgba(180, 230, 255, 0.35);
+}
+
+/* ================= HISTORIA ================= */
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    will-change: opacity, transform;
+}
+
+.section video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    will-change: opacity;
+}
+
+.arriba,
+.abajo {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    text-align: center;
+    padding: 0 5%;
+    color: white;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    animation: fadeIn 1.3s ease forwards;
+    will-change: opacity, transform;
+}
+
+.arriba { top: 5%; }
+.abajo { bottom: 5%; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= FINAL ================= */
+#final-animacion {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+}
+
+#anim-final canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    will-change: opacity, transform;
+}
+
+.fade-out {
+    opacity: 0 !important;
+    transition: opacity 0.6s ease;
+}
+
+body {
+    transition: opacity 0.6s ease;
+}
+
+#titulo-humanidad a {
+    color: inherit;      
+    text-decoration: none;
+}
+
+#titulo-humanidad a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ====================== CRÉDITOS ====================== */
+
+#creditos-final {
+    width: 100%;
+    min-height: 100vh; /* más flexible */
+    padding: 80px 20px;
+    background: #000;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Título */
+.titulo-final {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+}
+
+/* Grilla general */
+.grid-creditos {
+    display: grid;
+
+    /* 3 arriba */
+    grid-template-columns: repeat(3, 1fr);
+
+    width: 80%;
+    max-width: 1100px;
+    gap: 50px 20px;
+    justify-items: center;
+}
+
+/* Cada tarjeta */
+.persona {
+    text-align: center;
+}
+
+.nombre {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.rol {
+    font-size: 1.3rem;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+/* ======================
+   Fila de abajo CORRECTA
+   ====================== */
+
+/* Persona 4 → primera columna de la fila de abajo */
+.grid-creditos .persona:nth-child(4) {
+    grid-column: 1;
+}
+
+/* Persona 5 → segunda columna de la fila de abajo */
+.grid-creditos .persona:nth-child(5) {
+    grid-column: 2;
+}
+
+audio {
+    display: none !important;
+}
+
+/* ======================
+   RESPONSIVE
+   ====================== */
+
+@media (max-width: 900px) {
+    .grid-creditos {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-creditos .persona:nth-child(4),
+    .grid-creditos .persona:nth-child(5) {
+        grid-column: auto; /* vuelve a una sola columna */
+    }
+}
