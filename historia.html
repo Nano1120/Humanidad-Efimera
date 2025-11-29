@@ -11,43 +11,9 @@
 <body>
 
     <header class="historia-header">
-        <a class="btn-regresar" href="index.html">←Volver</a>
+        <!-- Cambiado a button con id para que coincida con los estilos de style.css -->
+        <button id="btn-regresar" class="btn-ingresar">← Volver</button>
     </header>
-
-    <style>
-        #btn-regresar {
-    padding: 14px 30px;
-    margin-top: 35px;
-    background: rgba(255, 255, 255, 0.18);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 12px;
-    cursor: pointer;
-
-    font-family: 'Mediga', serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-
-    z-index: 10;
-    position: relative;
-
-    transition: background 0.25s ease, 
-                transform 0.25s ease,
-                box-shadow 0.25s ease,
-                border-color 0.25s ease;
-
-    will-change: transform, box-shadow;
-}
-
-#btn-regresar:hover {
-    background: rgba(255, 255, 255, 0.28);
-    border-color: rgba(255, 255, 255, 0.7);
-    transform: scale(1.04);
-    box-shadow: 
-        0 0 8px rgba(200, 240, 255, 0.4),
-        0 0 18px rgba(200, 240, 255, 0.25);
-}
-        </style>
 
     <!-- ===================== HISTORIA ===================== -->
     <div class="scroll-container" id="historia">
@@ -288,6 +254,15 @@
     </div> 
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('btn-regresar');
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    // Volver a la página anterior en el historial del navegador
+                    window.history.back();
+                });
+            }
+        });
     </script>
 
 </body>
