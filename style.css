@@ -19,7 +19,7 @@ html, body {
 body {
     font-family: 'IM Fell English', serif;
     overflow-x: hidden;
-    background: black;
+    background: #2a3142;;
     color: white;
 
     backface-visibility: hidden;
