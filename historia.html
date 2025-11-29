@@ -15,22 +15,38 @@
     </header>
 
     <style>
-        .btn-regresar {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+        #btn-regresar {
+    padding: 14px 30px;
+    margin-top: 35px;
+    background: rgba(255, 255, 255, 0.18);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    cursor: pointer;
 
-        .btn-regresar:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+    font-family: 'Mediga', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+
+    z-index: 10;
+    position: relative;
+
+    transition: background 0.25s ease, 
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+
+    will-change: transform, box-shadow;
+}
+
+#btn-regresar:hover {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.04);
+    box-shadow: 
+        0 0 8px rgba(200, 240, 255, 0.4),
+        0 0 18px rgba(200, 240, 255, 0.25);
+}
         </style>
 
     <!-- ===================== HISTORIA ===================== -->
