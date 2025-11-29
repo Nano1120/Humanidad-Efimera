@@ -12,8 +12,6 @@
 
     <!-- ===================== HISTORIA ===================== -->
     <div class="scroll-container" id="historia">
-
-        <button id="btn-regresar" class="btn-ingresar">← Volver</button>
         
         <!-- PÁRRAFO 1 -->
         <section class="section" id="seccion-1">
@@ -217,37 +215,8 @@
         </section>
 
         <!-- ===================== CRÉDITOS ===================== -->
-        <section id="creditos">
-            <h2 class="creditos-titulo">¿Quiénes diseñaron esta página?</h2>
-
-            <div class="creditos-grid">
-                <div class="persona">
-                    <h3>Catalina Montoya</h3>
-                    <p>Programación</p>
-                </div>
-
-                <div class="persona">
-                    <h3>Isabella Uribe</h3>
-                    <p>Diseño gráfico</p>
-                </div>
-
-                <div class="persona">
-                    <h3>Maria Goyes</h3>
-                    <p>Diseño gráfico</p>
-                </div>
-
-                <div class="persona">
-                    <h3>Adriano Bernal</h3>
-                    <p>Storytelling</p>
-                </div>
-
-                <div class="persona">
-                    <h3>Valentina Ocampo</h3>
-                    <p>Asistente de producción</p>
-                </div>
-            </div>
-        </section>
-
+        <button id="btn-creadores" class="btn-ingresar">CREADORES</button>
+        <button id="btn-regresar" class="btn-ingresar">VOLVERS</button>
     </div> 
 
     <script>
@@ -257,6 +226,14 @@
                 btn.addEventListener('click', (e) => {
                     // Volver a la página anterior en el historial del navegador
                     window.history.back();
+                });
+            }
+
+            const btnCreadores = document.getElementById('btn-creadores');
+            if (btnCreadores) {
+                btnCreadores.addEventListener('click', () => {
+                    // Ir a la página de creadores
+                    window.location.href = 'creadores.html';
                 });
             }
         });
