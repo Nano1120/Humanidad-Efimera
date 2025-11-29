@@ -53,11 +53,37 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const btn = document.getElementById("btn-empezar");
+            const audio = document.getElementById('bg-music');
 
-            btn.addEventListener("click", () => {
-                // Ir a la nueva página de la historia
-                window.location.href = "historia.html";
-            });
+            // Intentar autoplay del audio al cargar. Muchos navegadores bloquean autoplay
+            // si no hay interacción del usuario; por eso, sólo navegamos automáticamente
+            // si audio.play() se resuelve.
+            if (audio) {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Autoplay permitido: navegamos directamente a historia
+                        window.location.href = 'historia.html';
+                    }).catch((err) => {
+                        // Autoplay bloqueado: dejamos el botón para que el usuario inicie
+                        // al hacer click reproducimos el audio y navegamos.
+                        btn.addEventListener('click', () => {
+                            // Intentar reproducir y luego navegar (no esperamos la promesa)
+                            try { audio.play(); } catch (e) { /* ignore */ }
+                            window.location.href = 'historia.html';
+                        });
+                    });
+                } else {
+                    // play() no devuelve promesa en este navegador: fallback al botón
+                    btn.addEventListener('click', () => {
+                        try { audio.play(); } catch (e) { /* ignore */ }
+                        window.location.href = 'historia.html';
+                    });
+                }
+            } else {
+                // Sin audio, simplemente navegar al hacer click
+                btn.addEventListener('click', () => { window.location.href = 'historia.html'; });
+            }
         });
     </script>
 
