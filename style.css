@@ -67,9 +67,22 @@ body {
 
 /* ================= TITULOS PORTADA ================= */
 .portada-contenido h1{
-    font-family: 'Spell of Asia', sans-serif;
-    color: white;
-    text-rendering: optimizeLegibility;
+    font-family: 'Spell of Asia', sans-serif;  
+    letter-spacing: 2px;
+
+    position: relative;
+    z-index: 5;
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.75);
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 400;
+
+    transition: color 0.35s ease,
+                transform 0.35s ease,
+                text-shadow 0.35s ease;
+
+    will-change: transform, text-shadow, color;
 }
 .portada-contenido h2,
 .portada-contenido h3 {
