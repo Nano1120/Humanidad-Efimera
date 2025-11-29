@@ -66,7 +66,11 @@ body {
 }
 
 /* ================= TITULOS PORTADA ================= */
-.portada-contenido h1,
+.portada-contenido h1{
+    font-family: 'Spell of Asia', sans-serif;
+    color: white;
+    text-rendering: optimizeLegibility;
+}
 .portada-contenido h2,
 .portada-contenido h3 {
     font-family: 'Mediga', serif;
