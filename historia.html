@@ -7,8 +7,42 @@
     <meta name="description" content="Sección Historia de Humanidad efímera." />
     <link rel="icon" type="image/jpeg" href="assets/favicon.jpeg?v=7" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Overlay para solicitar interacción si autoplay está bloqueado */
+        .audio-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.75);
+            z-index: 9999;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .audio-overlay .audio-overlay-inner {
+            max-width: 720px;
+        }
+
+        .audio-overlay p { font-size: 1.2rem; margin-bottom: 18px; }
+
+        .audio-overlay.hidden { display: none; }
+    </style>
 </head>
 <body>
+
+    <!-- Audio de fondo para la historia -->
+    <audio id="bg-music" src="assets/music.mp3" preload="auto" loop></audio>
+
+    <!-- Overlay que pide interacción si el autoplay es bloqueado -->
+    <div id="audio-overlay" class="audio-overlay hidden" aria-hidden="true">
+        <div class="audio-overlay-inner">
+            <p>Haz click para activar el audio y continuar con la experiencia.</p>
+            <button id="btn-play-audio" class="btn-ingresar">Escuchar y continuar</button>
+        </div>
+    </div>
     <audio id="audio-fondo" src="assets/music.mp3" loop></audio>
     <!-- ===================== HISTORIA ===================== -->
     <div class="scroll-container" id="historia">
@@ -236,6 +270,54 @@
                 btnCreadores.addEventListener('click', () => {
                     // Ir a la página de creadores
                     window.location.href = 'creadores.html';
+                });
+            }
+        });
+    </script>
+
+    <script>
+        // Intentar autoplay del audio; si falla, mostrar overlay de interacción
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bg-music');
+            const overlay = document.getElementById('audio-overlay');
+            const btnPlay = document.getElementById('btn-play-audio');
+
+            function showOverlay() {
+                if (overlay) {
+                    overlay.classList.remove('hidden');
+                    overlay.setAttribute('aria-hidden', 'false');
+                }
+            }
+
+            function hideOverlay() {
+                if (overlay) {
+                    overlay.classList.add('hidden');
+                    overlay.setAttribute('aria-hidden', 'true');
+                }
+            }
+
+            if (!audio) return;
+
+            // Intento de reproducción automática
+            const p = audio.play();
+            if (p !== undefined) {
+                p.then(() => {
+                    // Reproducción exitosa
+                    hideOverlay();
+                }).catch((err) => {
+                    // Autoplay bloqueado → mostrar overlay para que el usuario pulse
+                    showOverlay();
+                });
+            } else {
+                // No devuelve promesa: mostramos overlay para seguridad
+                showOverlay();
+            }
+
+            if (btnPlay) {
+                btnPlay.addEventListener('click', () => {
+                    // En el click intentamos reproducir y ocultamos overlay
+                    audio.play().catch(() => {});
+                    hideOverlay();
                 });
             }
         });
