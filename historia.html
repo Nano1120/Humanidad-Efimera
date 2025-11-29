@@ -11,8 +11,27 @@
 <body>
 
     <header class="historia-header">
-        <a class="btn-regresar" href="index.html">← Volver</a>
+        <a class="btn-regresar" href="index.html">←Volver</a>
     </header>
+
+    <style>
+        .btn-regresar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-regresar:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        </style>
 
     <!-- ===================== HISTORIA ===================== -->
     <div class="scroll-container" id="historia">
@@ -250,11 +269,9 @@
             </div>
         </section>
 
-    </div> <!-- cierre del contenedor historia -->
+    </div> 
 
     <script>
-        // Por ahora no hay scripts adicionales necesarios; la navegación se hace con enlaces.
-        // Si quieres que el audio de la portada siga sonando al navegar, podemos implementar playback compartido o abrir en la misma ventana con scroll.
     </script>
 
 </body>
